@@ -754,7 +754,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-            if card.ability.extra.xmult - card.ability.extra.mult_loss <= 0 then
+            if card.ability.extra.xmult - card.ability.extra.mult_loss <= 1 then
                 SMODS.destroy_cards(card, nil, nil, true)
                 return {
                     message = localize('k_eaten_ex'),
@@ -998,7 +998,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.destroy_card and not context.blueprint then
             if #context.full_hand == 1 and context.destroy_card == context.full_hand[1] and (context.full_hand[1]:get_id() == 14) and G.GAME.current_round.hands_played == 0 then
-                local _hand, _tally = nil, nil, 0
+                local _hand, _tally = nil, 0
                 for _, handname in ipairs(G.handlist) do
                     if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally then
                         _hand = handname
@@ -1789,4 +1789,3 @@ SMODS.Joker {
         end
     end
 }
-

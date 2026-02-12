@@ -6,14 +6,14 @@ A stupid **Balatro** mod I made for fun, full of stupid refrences to things tang
 
 ## Current Additions
 
-	-45 New Jokers
-	-2 New Joker Rarities
-	-2 New Soul-Like Spectral Cards
-	-1 New Voucher
-	-1 New Deck
+   - 45 New Jokers
+   - 2 New Joker Rarities
+   - 2 New Soul-Like Spectral Cards
+   - 1 New Voucher
+   - 1 New Deck
 
 ## Requirements
 
-	[Steamodded](https://github.com/Steamodded/smods)
-	[Talisman](https://github.com/SpectralPack/Talisman)
+   - [Steamodded](https://github.com/Steamodded/smods)
+   - [Talisman](https://github.com/SpectralPack/Talisman)
 

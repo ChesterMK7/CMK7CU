@@ -1,0 +1,15 @@
+{
+    "id": "cmk7cu",
+    "name": "ChesterMK7 Cinematic Universe",
+    "display_name": "CMK7CU",
+    "author": ["ChesterMK7"],
+    "description": "Random bullshit go!",
+    "prefix": "cmk7",
+    "main_file": "CMK7CU.lua",
+    "badge_colour": "000096",
+    "dependencies": [
+        "Talisman (>=2.6)",
+        "Steamodded (>=1.0.0~ALPHA-1225a)"
+    ],
+    "version": "0.2.43"
+}

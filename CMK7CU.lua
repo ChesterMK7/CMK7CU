@@ -25,7 +25,7 @@ SMODS.Rarity {
 	loc_txt = {
 		name = 'Linux'
 	},
-    default_weight = 0,
+    default_weight = 0.015,
     badge_colour = HEX("969696"),
     get_weight = function(self, weight, object_type)
         return weight
@@ -108,7 +108,7 @@ SMODS.Consumable {
 	set = 'Spectral',
     hidden = true,
     soul_set = 'Tarot',
-	soul_rate = 0.03,
+	soul_rate = 0.007,
     pos = { x = 0, y = 2 },
     use = function(self, card, area, copier)
         G.E_MANAGER:add_event(Event({

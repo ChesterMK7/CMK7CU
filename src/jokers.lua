@@ -1789,3 +1789,70 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "clodsire",
+    loc_txt = {
+		name = 'Clodsire',
+		text = {
+			"{C:chips}+#1#{} Chips for each",
+			"additional card above {C:attention}#3#{}",
+			"in your deck",
+            "{C:inactive}(Currently{} {C:chips}+#2#{} {C:inactive}Chips){}"
+		}
+	},
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    atlas = 'CMK7CU',
+    pos = { x = 3, y = 6 },
+    config = { extra = { chips = 20 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, math.max(0, card.ability.extra.chips * (G.playing_cards and (#G.playing_cards - G.GAME.starting_deck_size) or 0)), G.GAME.starting_deck_size } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                chips = math.max(0, card.ability.extra.chips * (#G.playing_cards - G.GAME.starting_deck_size))
+            }
+        end
+    end
+}
+
+SMODS.Joker {
+    key = "normal_face",
+    loc_txt = {
+		name = 'Normal Face',
+		text = {
+			"This joker gains {C:mult}+#2#{} Mult",
+            "when each played {C:attention}3{} is scored",
+            "{C:inactive}(Currently{} {C:mult}+#1#{} {C:inactive}Mult){}"
+		}
+	},
+    blueprint_compat = true,
+    perishable_compat = false,
+    rarity = 2,
+    cost = 7,
+    atlas = 'CMK7CU',
+    pos = { x = 2, y = 6 },
+    config = { extra = { mult = 0, mult_mod = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_mod } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 3 and not context.blueprint then
+            -- See note about SMODS Scaling Manipulation on the wiki
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
